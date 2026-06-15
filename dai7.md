@@ -6,7 +6,9 @@ POST
 
 http://www.is.kyusan-u.ac.jp/~toshi
 
-http://www.is.kyusan-u.ac.jp/~toshichan/
+http://www.is.kyusan-u.ac.jp
+/~toshi/
+<schema>://<host>/<path>
 
 ブラウザ
 1. www.is.kyusan-u.ac.jpにhttpで接続
