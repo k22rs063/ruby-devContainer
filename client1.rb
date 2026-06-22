@@ -1,4 +1,4 @@
-#! /usr.local.bin/ruby
+#! /usr/local/bin/ruby
 # client1.rb
 
 require 'socket'
@@ -17,16 +17,22 @@ path = '/~toshi/'
 # pp cmd
 # sock.print cmd
 
+# sock = TCPSocket.new host, port
+# cmd = 'GET ' + path + " HTTP/1.1\r\n" + "Host: " + host + "\r\n\r\n"
+# pp cmd
+# sock.print cmd
+
 sock = TCPSocket.new host, port
-cmd = 'GET ' + path + " HTTP/1.1\r\n" + "Host: " + host + "\r\n\r\n"
+cmd = "GET #{path} HTTP/1.1\r\n"
+cmd += "Host: #{host}\r\n"
+cmd += "connection: close\r\n"
+cmd += "\r\n"
 pp cmd
 sock.print cmd
 
-
-
 is_body = false
 while line = sock.gets
-  pp line
+  # pp line
   puts line if is_body
   is_body = true if line == "\r\n"
 end
