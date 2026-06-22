@@ -3,9 +3,13 @@
 
 require 'socket'
 
-host = 'www.is.kyusan-u.ac.jp'
+host = ARGV[0]
 port = 'http'
-path = '/~toshi/'
+# path = '/~toshi/'
+path = ARGV[1]
+if path = nil
+  path = '/'
+end
 
 # sock = TCPSocket.new host, port
 # sock.print "GET #{path} HTTP/1.0\r\n"
@@ -30,9 +34,10 @@ cmd += "\r\n"
 pp cmd
 sock.print cmd
 
+
 is_body = false
 while line = sock.gets
-  # pp line
+  pp line
   puts line if is_body
   is_body = true if line == "\r\n"
 end
