@@ -7,7 +7,7 @@ host = ARGV[0]
 port = 'http'
 # path = '/~toshi/'
 path = ARGV[1]
-if path = nil
+if path == nil
   path = '/'
 end
 
