@@ -3,6 +3,16 @@
 
 require 'socket'
 def server s
+  cmd, path, ver = s.gets.split " "
+  if path == "/"
+    pp "INDEX"
+    s.puts "index"
+  else
+    pp "OTHER"
+    s.puts "other"
+  end
+  s.close
+  
   while line = s.gets
     pp line
     s.puts line
@@ -17,6 +27,5 @@ loop do
   s = gs.accept
   Thread.new do
     server s
-  sleep 10
   end
 end
