@@ -11,12 +11,12 @@ end
 
 sock = TCPSocket.new 'localhost', 'http'
 cmd = method + " / HTTP/1.0\r\n\r\n"
-pp cmd
+# pp cmd
 sock.print cmd
 
 is_body = false
 while line = sock.gets
-    pp line
+    # pp line
     puts line if is_body
     is_body = true if line == "\r\n"
 end

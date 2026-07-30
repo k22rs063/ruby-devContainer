@@ -9,7 +9,14 @@ OMIKUJI = ["大吉", "中吉", "小吉", "末吉", "凶"]
 def server s
   cmd, path, ver = s.gets.split " "
 
-  if path == "/"
+  if cmd == "OMIKUJI"
+    kuji = OMIKUJI.sample
+    s.print "HTTP/1.0 200 OK\r\n"
+    s.print "Content-Type: text/plain; charset=UTF-8\r\n"
+    s.print "\r\n"
+    pp "OMIKUJI " + kuji
+    s.puts kuji
+  elsif cmd == "GET"
     kuji = OMIKUJI.sample
     s.print "HTTP/1.0 200 OK\r\n"
     s.print "Content-Type: text/html; charset=UTF-8\r\n"
