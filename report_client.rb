@@ -10,7 +10,7 @@ if method == nil
 end
 
 sock = TCPSocket.new 'localhost', 'http'
-cmd = method + " /HTTP/1.0\r\n\r\n"
+cmd = method + " / HTTP/1.0\r\n\r\n"
 pp cmd
 sock.print cmd
 
