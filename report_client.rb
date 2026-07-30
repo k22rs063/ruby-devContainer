@@ -5,12 +5,16 @@
 require 'socket'
 
 method = ARGV[0]
+path = ARGV[1]
 if method == nil
     method = 'OMIKUJI'
 end
+if path == nil
+    path = '/'
+end
 
 sock = TCPSocket.new 'localhost', 'http'
-cmd = method + " / HTTP/1.0\r\n\r\n"
+cmd = method + " " + path + " HTTP/1.0\r\n\r\n"
 # pp cmd
 sock.print cmd
 
