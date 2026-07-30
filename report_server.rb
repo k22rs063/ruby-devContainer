@@ -16,12 +16,9 @@ def server s
     s.print "\r\n"
     s.puts "<h1>おみくじ</h1>"
     s.puts "<p>今日の運勢は#{kuji}です</p>"
-  elsif path == "/api/now"
-    s.print "HTTP/1.0 200 OK\r\n"
-    s.print "Content-Type: application/json\r\n"
     s.print "\r\n"
     s.puts "{"
-    s.puts '"\"time\:"' + "#{Time.now}" + '"'
+    s.puts '"time": "' + Time.now.strftime("%Y年%m月%d日 %H時%M分") + '"'
     s.puts "}"
   else
     s.print "HTTP/1.0 404 Not Found\r\n"
