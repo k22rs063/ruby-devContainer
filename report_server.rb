@@ -1,5 +1,5 @@
 #! /usr/local/bin/ruby
-# server1.rb
+# report_server.rb
 # おみくじサーバ
 
 require 'socket'
@@ -42,5 +42,6 @@ loop do
   s = gs.accept
   Thread.new do
     server s
+    s.close
   end
 end
