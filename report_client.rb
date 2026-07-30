@@ -1,18 +1,16 @@
 #! /usr/local/bin/ruby
-#report_server.rb
+#report_client.rb
 #おみくじクライアント
 
 require 'socket'
 
-host = ARGV[0]
-port = 'http'
-path = ARGV[1]
-if path == nil
-    path = '/'
+method = ARGV[0]
+if method == nil
+    method = 'OMIKUJI'
 end
 
-sock = TCPSocket.new host, port
-cmd = 'GET ' + path + " HTTP/1.0\r\n\r\n"
+sock = TCPSocket.new 'localhost', 'http'
+cmd = method + " /HTTP/1.0\r\n\r\n"
 pp cmd
 sock.print cmd
 
@@ -22,3 +20,5 @@ while line = sock.gets
     puts line if is_body
     is_body = true if line == "\r\n"
 end
+
+sock.close
