@@ -12,7 +12,9 @@ if path == nil
 end
 
 sock = TCPSocket.new host, port
-sock.print 'GET ' + path + " HTTP/1.0\r\n\r\n"
+cmd = 'GET ' + path + " HTTP/1.0\r\n\r\n"
+pp cmd
+sock.print cmd
 
 is_body = false
 while line = sock.gets

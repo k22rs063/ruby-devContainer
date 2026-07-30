@@ -4,15 +4,15 @@
 
 require 'socket'
 
-omikuji = ["大吉", "中吉", "小吉", "末吉", "凶"]
+OMIKUJI = ["大吉", "中吉", "小吉", "末吉", "凶"]
 
 def server s
   cmd, path, ver = s.gets.split " "
 
   if path == "/"
-    kuji = omikuji.sample
+    kuji = OMIKUJI.sample
     s.print "HTTP/1.0 200 OK\r\n"
-    s.print "Content-Type: text/html\r\n"
+    s.print "Content-Type: text/html; charset=UTF-8\r\n"
     s.print "\r\n"
     s.puts "<h1>おみくじ</h1>"
     s.puts "<p>今日の運勢は#{kuji}です</p>"
