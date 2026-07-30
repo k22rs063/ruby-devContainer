@@ -16,6 +16,11 @@ def server s
     s.print "\r\n"
     pp "OMIKUJI " + kuji
     s.puts kuji
+  elsif cmd == "DATE"
+      s.print "HTTP/1.0 200 OK\r\n"
+      s.print "Content-Type: text/plain; charset=UTF-8\r\n"
+      s.print "\r\n"
+      s.puts Time.now.getlocal('+09:00').strftime('%Y年%m月%d日 %H時%M分')
   elsif cmd == "GET"
     if path == "/"
       kuji = OMIKUJI.sample
@@ -24,7 +29,7 @@ def server s
       s.print "\r\n"
       s.puts "<h1>おみくじ</h1>"
       s.puts "<p>今日の運勢は#{kuji}です</p>"
-      s.puts "<p>#{Time.now.getlocal('+09:00').strftime('%Y年%m月%d日 %H時%M分')}</p>"
+      s.puts Time.now.getlocal('+09:00').strftime('%Y年%m月%d日 %H時%M分')
     else
       s.print "HTTP/1.0 404 Not Found\r\n"
       s.print "Content-Type: text/html\r\n"
