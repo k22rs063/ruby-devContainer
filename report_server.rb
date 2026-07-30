@@ -37,6 +37,12 @@ def server s
       s.puts "<h1>404 Not Found</h1>"
       s.puts "<p>404 Not Found</p>"
     end
+  else
+    s.print "HTTP/1.0 404 Not Found\r\n"
+    s.print "Content-Type: text/html\r\n"
+    s.print "\r\n"
+    s.puts "<h1>404 Not Found</h1>"
+    s.puts "<p>404 Not Found</p>"
   end
 end
 
